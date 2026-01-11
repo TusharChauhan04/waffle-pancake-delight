@@ -1,0 +1,860 @@
+/* ===================================
+   Taste & Craving - Custom Styles
+   Design System: Dusty Pink/Mauve + Warm Golden
+   =================================== */
+
+/* ===================================
+   CSS Custom Properties (Design System)
+   =================================== */
+:root {
+    /* Primary Colors - Dusty Pink/Mauve */
+    --color-primary: hsl(340, 30%, 65%);
+    --color-primary-dark: hsl(340, 35%, 60%);
+    --color-primary-light: hsl(340, 30%, 75%);
+    --color-primary-foreground: hsl(30, 30%, 98%);
+    
+    /* Secondary Colors - Warm Golden */
+    --color-secondary: hsl(35, 70%, 55%);
+    --color-secondary-dark: hsl(35, 70%, 45%);
+    --color-secondary-foreground: hsl(20, 30%, 15%);
+    
+    /* Neutral Colors - Cream/Off-white */
+    --color-background: hsl(30, 25%, 96%);
+    --color-foreground: hsl(20, 30%, 20%);
+    --color-card: hsl(30, 30%, 98%);
+    
+    /* Accent Colors */
+    --color-accent: hsl(340, 25%, 85%);
+    --color-accent-dark: hsl(340, 25%, 75%);
+    --color-muted: hsl(340, 20%, 92%);
+    --color-muted-foreground: hsl(20, 15%, 45%);
+    
+    /* Border & Input */
+    --color-border: hsl(30, 20%, 88%);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* ===================================
+   Base Styles
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===================================
+   Utility Classes
+   =================================== */
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===================================
+   Animations
+   =================================== */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px hsla(340, 30%, 65%, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px hsla(340, 30%, 65%, 0.5);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* ===================================
+   Navigation
+   =================================== */
+#navbar {
+    background-color: hsla(30, 25%, 96%, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+#navbar.scrolled {
+    background-color: hsla(30, 25%, 96%, 0.98);
+    box-shadow: var(--shadow-md);
+}
+
+.navbar-brand .brand-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-nav .nav-link {
+    color: hsla(20, 30%, 20%, 0.8);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-primary);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* ===================================
+   Buttons
+   =================================== */
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline-primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 60px;
+    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-accent) 100%);
+    overflow: hidden;
+}
+
+.hero-background-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.pattern-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.pattern-1 {
+    top: 80px;
+    left: 40px;
+    width: 128px;
+    height: 128px;
+    background-color: var(--color-primary);
+}
+
+.pattern-2 {
+    bottom: 160px;
+    right: 80px;
+    width: 192px;
+    height: 192px;
+    background-color: var(--color-secondary);
+}
+
+.pattern-3 {
+    top: 50%;
+    left: 33%;
+    width: 96px;
+    height: 96px;
+    background-color: var(--color-primary);
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent);
+    border-radius: 50px;
+}
+
+.hero-badge span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    color: var(--color-muted-foreground);
+    max-width: 500px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+}
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-number {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--color-muted-foreground);
+    margin: 0;
+}
+
+.hero-image-wrapper {
+    position: relative;
+}
+
+.hero-image-container {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, hsla(20, 30%, 20%, 0.2), transparent);
+}
+
+.hero-price-badge {
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    background-color: var(--color-card);
+    padding: 1rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--color-border);
+}
+
+.badge-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted-foreground);
+    margin-bottom: 0.25rem;
+}
+
+.badge-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+/* ===================================
+   Section Styles
+   =================================== */
+.menu-section,
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--color-background);
+}
+
+.offers-section {
+    padding: 80px 0;
+    background-color: hsla(340, 25%, 85%, 0.5);
+}
+
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent);
+    color: var(--color-foreground);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.section-badge-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-description {
+    color: var(--color-muted-foreground);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ===================================
+   Menu Cards
+   =================================== */
+.menu-card {
+    background: linear-gradient(145deg, var(--color-card) 0%, hsla(340, 25%, 85%, 0.5) 100%);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.menu-card-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.menu-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.menu-card:hover .menu-card-image img {
+    transform: scale(1.05);
+}
+
+.menu-card-body {
+    padding: 1.5rem;
+}
+
+.menu-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+}
+
+.menu-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-items-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.menu-items-list li:last-child {
+    border-bottom: none;
+}
+
+.menu-items-list .price {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* ===================================
+   Special Cards
+   =================================== */
+.special-card {
+    background: linear-gradient(145deg, var(--color-card) 0%, hsla(340, 25%, 85%, 0.5) 100%);
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    height: 100%;
+}
+
+.special-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.special-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.special-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-name {
+    font-weight: 500;
+}
+
+.item-price {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.mocktail-price-badge {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.mocktail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.mocktail-tag {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-accent);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* ===================================
+   Offer Cards
+   =================================== */
+.offer-card {
+    background-color: var(--color-card);
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.offer-icon {
+    width: 56px;
+    height: 56px;
+    background-color: hsla(340, 30%, 65%, 0.1);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.offer-icon svg {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+.offer-card:hover .offer-icon {
+    background-color: var(--color-primary);
+}
+
+.offer-card:hover .offer-icon svg {
+    color: var(--color-primary-foreground);
+}
+
+.offer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.offer-description {
+    color: var(--color-muted-foreground);
+    margin-bottom: 1rem;
+}
+
+.offer-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* ===================================
+   Add-on Banner
+   =================================== */
+.addon-banner {
+    background-color: var(--color-card);
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+}
+
+.addon-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.addon-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.addon-item {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-accent);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.addon-name {
+    font-weight: 500;
+}
+
+.addon-price {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* ===================================
+   Contact Cards
+   =================================== */
+.contact-card {
+    background: linear-gradient(145deg, var(--color-card) 0%, hsla(340, 25%, 85%, 0.5) 100%);
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    background-color: hsla(340, 30%, 65%, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-icon svg {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+    background-color: var(--color-primary);
+}
+
+.contact-card:hover .contact-icon svg {
+    color: var(--color-primary-foreground);
+}
+
+.contact-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.contact-info {
+    color: var(--color-muted-foreground);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+.footer {
+    background-color: var(--color-foreground);
+    padding: 2rem 0;
+}
+
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-background);
+    margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+    color: hsla(30, 25%, 96%, 0.7);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: hsla(30, 25%, 96%, 0.7);
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-background);
+}
+
+.footer-love {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    color: hsla(30, 25%, 96%, 0.7);
+    font-size: 0.875rem;
+}
+
+.footer-love svg {
+    color: var(--color-primary);
+}
+
+.footer-bottom {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid hsla(30, 25%, 96%, 0.2);
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: hsla(30, 25%, 96%, 0.5);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 767px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .hero-stats {
+        gap: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .menu-section,
+    .offers-section,
+    .contact-section {
+        padding: 60px 0;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+}
+
+/* ===================================
+   Smooth Scrolling
+   =================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===================================
+   Accessibility
+   =================================== */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+@media print {
+    .navbar,
+    .footer {
+        display: none;
+    }
+}
